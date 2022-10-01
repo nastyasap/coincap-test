@@ -3,14 +3,14 @@ import {CryptoCost, CryptoCostProps} from './CryptoCost/CryptoCost';
 import {Wallet} from './Wallet/Wallet';
 
 type Props = {
-    topCurrency: CryptoCostProps[]
+    topCurrencies: CryptoCostProps[]
 }
 
-export const Header: React.FC<Props> = ({topCurrency}) => {
+export const Header: React.FC<Props> = ({topCurrencies}) => {
     return (
         <>
             <div>
-                {topCurrency.map(crypto =>
+                {topCurrencies.map(crypto =>
                     <CryptoCost key={crypto.name} name={crypto.name} price={crypto.price} prevPrice={crypto.prevPrice}/>
                 )}
             </div>

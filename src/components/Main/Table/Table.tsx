@@ -1,14 +1,15 @@
 import React from 'react'
-import {useTable} from 'react-table'
 import {CurrencyData} from '../Main';
+import {TableHeader} from './TableHeader/TableHeader';
+import {TableRows} from './TableRows/TableRows';
 
-type Accessor = 'name' | 'price' | 'marketCap' | 'dayChange' | 'dayVolume' | 'add'
-type Columns = {
-    Header: string
+export type Accessor = 'name' | 'price' | 'marketCap' | 'dayChange' | 'dayVolume' | 'add'
+export type Columns = {
+    header: string
     accessor: Accessor
 }
 
-type Data = {
+export type Data = {
     name: string
     price: string
     marketCap: string
@@ -37,68 +38,37 @@ export const Table: React.FC<Props> = ({currencyData}) => {
     const columns: Columns[] = React.useMemo(
         () => [
             {
-                Header: 'Name',
+                header: 'Name',
                 accessor: 'name',
             },
             {
-                Header: 'Price',
+                header: 'Price',
                 accessor: 'price',
             },
             {
-                Header: 'Market Cap',
+                header: 'Market Cap',
                 accessor: 'marketCap',
             },
             {
-                Header: '24h Change',
+                header: '24h Change',
                 accessor: 'dayChange',
             },
             {
-                Header: '24H Volume',
+                header: '24H Volume',
                 accessor: 'dayVolume',
             },
             {
-                Header: 'Add to wallet',
+                header: 'Add to wallet',
                 accessor: 'add',
             },
         ],
         []
     )
 
-    const {
-        getTableProps,
-        getTableBodyProps,
-        headerGroups,
-        rows,
-        prepareRow,
-    } = useTable({columns, data})
-
     return (
-        <table {...getTableProps()}>
-            <thead>
-            {headerGroups.map(headerGroup => (
-                <tr {...headerGroup.getHeaderGroupProps()}>
-                    {headerGroup.headers.map(column => (
-                        <th {...column.getHeaderProps()} >
-                            {column.render('Header')}
-                        </th>
-                    ))}
-                </tr>
-            ))}
-            </thead>
-            <tbody {...getTableBodyProps()}>
-            {rows.map(row => {
-                prepareRow(row)
-                return (
-                    <tr {...row.getRowProps()}>
-                        {row.cells.map(cell =>
-                            <td {...cell.getCellProps()}>
-                                {cell.render('Cell')}
-                            </td>
-                        )}
-                    </tr>
-                )
-            })}
-            </tbody>
+        <table>
+            <TableHeader columns={columns}/>
+            <TableRows columns={columns} data={data}/>
         </table>
     )
 }

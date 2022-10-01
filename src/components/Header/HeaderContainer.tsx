@@ -7,6 +7,6 @@ export const HeaderContainer = () => {
         {name: 'ripple', price: 688, prevPrice: 687.5}
     ]
     return (
-        <Header topCurrency={data}/>
+        <Header topCurrencies={data}/>
     )
 }
