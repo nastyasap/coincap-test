@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
 import ReactDOM from 'react-dom';
-import {AddCurrencyToWallet} from './AddCurrencyToWallet/AddCurrencyToWallet';
-import {OpenWallet} from './OpenWallet/OpenWallet';
+import OpenWallet from './OpenWallet';
+import AddCurrencyToWallet from './AddCurrencyToWallet';
 
 const ModalsContext = React.createContext({
     setIsAddModalOpen: (value: boolean) => {
@@ -22,7 +22,7 @@ export const ModalsProvider: React.FC<Props> = ({children}) => {
         <>
             {ReactDOM.createPortal(
                 <div>
-                    <AddCurrencyToWallet isOpen={isAddModalOpen} onClose={() => setIsMyWalletModalOpen(false)}/>
+                    <AddCurrencyToWallet isOpen={isAddModalOpen} onClose={() => setIsAddModalOpen(false)}/>
                     <OpenWallet isOpen={isMyWalletModalOpen} onClose={() => setIsMyWalletModalOpen(false)}/>
                 </div>
                 , document.body

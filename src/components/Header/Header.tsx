@@ -11,7 +11,7 @@ export const Header: React.FC<Props> = ({topCurrencies}) => {
         <>
             <div>
                 {topCurrencies.map(crypto =>
-                    <CryptoCost key={crypto.name} name={crypto.name} price={crypto.price} prevPrice={crypto.prevPrice}/>
+                    <CryptoCost key={crypto.name} name={crypto.name} price={crypto.price} dayChange={crypto.dayChange}/>
                 )}
             </div>
             <Wallet/>

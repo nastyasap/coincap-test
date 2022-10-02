@@ -2,9 +2,9 @@ import {Header} from './Header';
 
 export const HeaderContainer = () => {
     const data = [
-        {name: 'bitcoin', price: 6929, prevPrice: 6926},
-        {name: 'ethereum', price: 405, prevPrice: 401},
-        {name: 'ripple', price: 688, prevPrice: 687.5}
+        {name: 'bitcoin', price: 6929, dayChange: -0.81},
+        {name: 'ethereum', price: 405, dayChange: -0.5},
+        {name: 'ripple', price: 688, dayChange: -0.6}
     ]
     return (
         <Header topCurrencies={data}/>
