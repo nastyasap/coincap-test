@@ -1,9 +1,9 @@
 import React from 'react';
-import {Columns} from '../../Main';
-import {MainAccessor} from '../Table';
+import {WalletAccessor} from '../Table';
+import {Columns} from '../../../../Main/Main';
 
 type Props = {
-    columns: Columns<MainAccessor>[]
+    columns: Columns<WalletAccessor>[]
 }
 
 export const TableHeader: React.FC<Props> = ({columns}) => {

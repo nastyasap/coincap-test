@@ -46,6 +46,7 @@ export const walletSlice = createSlice({
                 state.isLoading = true
             },
             deleteCurrencyFromWalletSuccess(state, action: PayloadAction<{ id: string, count: number, priceUsd: number }>) {
+                state.isLoading = false
                 const index = state.currenciesData.findIndex(currency => currency.id === action.payload.id)
                 if (index > -1) {
                     state.currenciesData.splice(index, 1)

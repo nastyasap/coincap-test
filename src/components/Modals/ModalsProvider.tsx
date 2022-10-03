@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react';
 import ReactDOM from 'react-dom';
-import OpenWallet from './OpenWallet';
+import OpenWallet from './Wallet';
 import AddCurrencyToWallet from './AddCurrencyToWallet';
 import {ModalContainer} from './ModalContainer';
 

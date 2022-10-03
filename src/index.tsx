@@ -5,21 +5,26 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
 import {ModalsProvider} from './components/Modals/ModalsProvider';
-import { Global } from './components/common/CommonStyles';
+import {Global} from './components/common/CommonStyles';
+import {Provider} from 'react-redux';
+import {store} from './store/store';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 root.render(
     <React.StrictMode>
-        <ModalsProvider>
-            <BrowserRouter>
-                <Global/>
-                <App/>
-            </BrowserRouter>
-        </ModalsProvider>
+        <Provider store={store}>
+            <ModalsProvider>
+                <BrowserRouter>
+                    <Global/>
+                    <App/>
+                </BrowserRouter>
+            </ModalsProvider>
+        </Provider>
     </React.StrictMode>
-);
+)
+;
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

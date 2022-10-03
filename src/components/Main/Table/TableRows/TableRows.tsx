@@ -1,11 +1,12 @@
 import React from 'react';
-import {Columns, Data} from '../Table';
 import {useModals} from '../../../Modals/ModalsProvider';
 import {ButtonStyled, LinkStyled} from '../../../common/CommonStyles';
+import {Columns} from '../../Main';
+import {Data, MainAccessor} from '../Table';
 
 type Props = {
-    data: Data[]
-    columns: Columns[]
+    data: Array<Data>
+    columns: Columns<MainAccessor>[]
 }
 
 export const TableRows: React.FC<Props> = ({data, columns}) => {
