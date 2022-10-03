@@ -1,5 +1,6 @@
 import React from 'react';
 import {Table} from './Table/Table';
+import {FlexStyled} from '../common/CommonStyles';
 
 type Props = {
     currencyData: CurrencyData[]
@@ -21,8 +22,8 @@ export type CurrencyData = {
 
 export const Main: React.FC<Props> = ({currencyData}) => {
     return (
-        <>
+        <FlexStyled>
             <Table currencyData={currencyData}/>
-        </>
+        </FlexStyled>
     )
 }

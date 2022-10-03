@@ -2,6 +2,7 @@ import React from 'react'
 import {CurrencyData} from '../Main';
 import {TableHeader} from './TableHeader/TableHeader';
 import {TableRows} from './TableRows/TableRows';
+import {TableStyled} from './TableStyled';
 
 export type Accessor = 'name' | 'price' | 'marketCap' | 'dayChange' | 'dayVolume' | 'add'
 export type Columns = {
@@ -10,6 +11,7 @@ export type Columns = {
 }
 
 export type Data = {
+    id: string
     name: string
     price: string
     marketCap: string
@@ -25,6 +27,7 @@ type Props = {
 export const Table: React.FC<Props> = ({currencyData}) => {
     const data: Data[] = React.useMemo(
         () => currencyData.map(item => ({
+            id: item.id,
             name: item.name,
             price: '$ ' + (Number(item.priceUsd).toFixed(2)).toString(),
             marketCap: '$ ' + ((Number(item.marketCapUsd) / 1000000000).toFixed(2)).toString() + ' B',
@@ -66,9 +69,9 @@ export const Table: React.FC<Props> = ({currencyData}) => {
     )
 
     return (
-        <table>
+        <TableStyled>
             <TableHeader columns={columns}/>
             <TableRows columns={columns} data={data}/>
-        </table>
+        </TableStyled>
     )
 }

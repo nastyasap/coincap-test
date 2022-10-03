@@ -1,4 +1,5 @@
 import React from 'react';
+import {ButtonStyled} from '../../common/CommonStyles';
 
 type Props = {
     isOpen: boolean
@@ -10,7 +11,7 @@ export const OpenWallet: React.FC<Props> = ({isOpen, onClose}) => {
     return (
         <div>
             <span>My Wallet</span>
-            <button onClick={onClose}>Close</button>
+            <ButtonStyled onClick={onClose}>Close</ButtonStyled>
         </div>
     )
 }

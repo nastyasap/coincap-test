@@ -1,6 +1,7 @@
 import React from 'react';
 import {Columns, Data} from '../Table';
 import {useModals} from '../../../Modals/ModalsProvider';
+import {ButtonStyled, LinkStyled} from '../../../common/CommonStyles';
 
 type Props = {
     data: Data[]
@@ -14,8 +15,8 @@ export const TableRows: React.FC<Props> = ({data, columns}) => {
             {columns.map(column =>
                 <td key={column.accessor}>
                     {column.accessor === 'add' ?
-                        <button onClick={() => setIsAddModalOpen(true)}>{row[column.accessor]}</button> :
-                        <a href={''}>{row[column.accessor]}</a>}
+                        <ButtonStyled onClick={() => setIsAddModalOpen(true)}>{row[column.accessor]}</ButtonStyled> :
+                        <LinkStyled to={`/${row.id}/1d`}>{row[column.accessor]}</LinkStyled>}
                 </td>
             )}
         </tr>

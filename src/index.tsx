@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
 import {ModalsProvider} from './components/Modals/ModalsProvider';
+import { Global } from './components/common/CommonStyles';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -13,6 +14,7 @@ root.render(
     <React.StrictMode>
         <ModalsProvider>
             <BrowserRouter>
+                <Global/>
                 <App/>
             </BrowserRouter>
         </ModalsProvider>
