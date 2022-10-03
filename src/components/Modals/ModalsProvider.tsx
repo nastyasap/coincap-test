@@ -2,10 +2,12 @@ import React, {useContext, useState} from 'react';
 import ReactDOM from 'react-dom';
 import OpenWallet from './OpenWallet';
 import AddCurrencyToWallet from './AddCurrencyToWallet';
+import {ModalContainer} from './ModalContainer';
 
 const ModalsContext = React.createContext({
-    setIsAddModalOpen: (value: boolean) => {
-    }, setIsMyWalletModalOpen: (value: boolean) => {
+    setAddCurrencyId: (value: null | string) => {
+    },
+    setIsMyWalletModalOpen: (value: boolean) => {
     }
 })
 export const useModals = () => useContext(ModalsContext)
@@ -15,16 +17,22 @@ type Props = {
 }
 
 export const ModalsProvider: React.FC<Props> = ({children}) => {
-    const [isAddModalOpen, setIsAddModalOpen] = useState(false)
+    const [addCurrencyId, setAddCurrencyId] = useState<null | string>(null)
     const [isMyWalletModalOpen, setIsMyWalletModalOpen] = useState(false)
 
-    return <ModalsContext.Provider value={{setIsAddModalOpen, setIsMyWalletModalOpen}}>
+    return <ModalsContext.Provider value={{setAddCurrencyId, setIsMyWalletModalOpen}}>
         <>
             {ReactDOM.createPortal(
-                <div>
-                    <AddCurrencyToWallet isOpen={isAddModalOpen} onClose={() => setIsAddModalOpen(false)}/>
-                    <OpenWallet isOpen={isMyWalletModalOpen} onClose={() => setIsMyWalletModalOpen(false)}/>
-                </div>
+                <>
+                    <ModalContainer isOpen={addCurrencyId !== null} onClose={() => setAddCurrencyId(null)}
+                                    header={'Add Currency'}>
+                        <AddCurrencyToWallet onClose={() => setAddCurrencyId(null)}/>
+                    </ModalContainer>
+                    <ModalContainer isOpen={isMyWalletModalOpen} onClose={() => setIsMyWalletModalOpen(false)}
+                                    header={'My Wallet'}>
+                        <OpenWallet/>
+                    </ModalContainer>
+                </>
                 , document.body
             )}
             {children}

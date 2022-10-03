@@ -1,17 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {ButtonStyled} from '../../common/CommonStyles';
 
 type Props = {
-    isOpen: boolean
     onClose: () => void
 }
 
-export const AddCurrencyToWallet: React.FC<Props> = ({isOpen, onClose}) => {
-    if (!isOpen) return null
+export const AddCurrencyToWallet: React.FC<Props> = ({onClose}) => {
+    const [value, setValue] = useState()
+    const onSubmit = () => {
+        onClose()
+    }
+
     return (
         <div>
-            <span>Add Currency</span>
-            <ButtonStyled onClick={onClose}>Close</ButtonStyled>
+            <input value={value}/>
+            <ButtonStyled onClick={onSubmit}>Submit</ButtonStyled>
         </div>
     )
 }

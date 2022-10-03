@@ -9,13 +9,13 @@ type Props = {
 }
 
 export const TableRows: React.FC<Props> = ({data, columns}) => {
-    const {setIsAddModalOpen} = useModals()
+    const {setAddCurrencyId} = useModals()
     const rows = data.map((row, index) =>
         <tr key={`row-${index}`}>
             {columns.map(column =>
                 <td key={column.accessor}>
                     {column.accessor === 'add' ?
-                        <ButtonStyled onClick={() => setIsAddModalOpen(true)}>{row[column.accessor]}</ButtonStyled> :
+                        <ButtonStyled onClick={() => setAddCurrencyId(row.id)}>{row[column.accessor]}</ButtonStyled> :
                         <LinkStyled to={`/${row.id}/1d`}>{row[column.accessor]}</LinkStyled>}
                 </td>
             )}

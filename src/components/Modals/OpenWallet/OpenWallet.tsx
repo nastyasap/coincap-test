@@ -1,17 +1,11 @@
 import React from 'react';
-import {ButtonStyled} from '../../common/CommonStyles';
 
-type Props = {
-    isOpen: boolean
-    onClose: () => void
-}
+type Props = {}
 
-export const OpenWallet: React.FC<Props> = ({isOpen, onClose}) => {
-    if (!isOpen) return null
+export const OpenWallet: React.FC<Props> = ({}) => {
     return (
-        <div>
-            <span>My Wallet</span>
-            <ButtonStyled onClick={onClose}>Close</ButtonStyled>
-        </div>
+        <>
+
+        </>
     )
 }
