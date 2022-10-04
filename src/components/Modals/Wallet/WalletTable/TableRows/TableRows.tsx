@@ -1,7 +1,7 @@
 import React from 'react';
 import {WalletAccessor, WalletData} from '../Table';
-import {Columns} from '../../../../Main/Main';
 import {ButtonStyled} from '../../../../common/CommonStyles';
+import {Columns} from '../../../../../types/types';
 
 type Props = {
     data: Array<WalletData>

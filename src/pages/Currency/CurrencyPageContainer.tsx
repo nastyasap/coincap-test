@@ -1,9 +1,9 @@
 import {CurrencyPage} from './CurrencyPage';
 import {useParams} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
-import {getCurrencyData, getCurrencyHistoryData} from '../../../../../store/selectors/currency';
+import {getCurrencyData, getCurrencyHistoryData} from '../../store/selectors/currency';
 import {useEffect} from 'react';
-import {currencySlice} from '../../../../../store/reducers/currency';
+import {currencySlice} from '../../store/reducers/currency';
 
 export const CurrencyPageContainer = () => {
     const {id} = useParams()

@@ -1,7 +1,7 @@
 import {all, call, put, takeLatest} from '@redux-saga/core/effects';
 import {currenciesApi} from '../../api/api';
 import {walletSlice} from '../reducers/wallet';
-import {CurrencyData} from '../../components/Main/Main';
+import {CurrencyData} from '../../types/types';
 
 function* getCurrentCurrenciesPrice({payload}: ReturnType<typeof walletSlice.actions.loadWalletRequest>) {
     const {data} = yield call(currenciesApi.getDataTable, 0, undefined, payload.join(','))

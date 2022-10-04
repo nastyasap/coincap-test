@@ -1,6 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {CurrencyData} from '../../components/Main/Main';
-import {HistoryData} from '../../components/Main/Table/TableRows/CurrencyPage/CurrencyPage';
+import {CurrencyData, HistoryData} from '../../types/types';
 
 type InitialState = {
     isLoading: boolean

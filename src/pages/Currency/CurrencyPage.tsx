@@ -1,13 +1,9 @@
-import {FlexStyled} from '../../../../common/CommonStyles';
+import {FlexStyled} from '../../components/common/CommonStyles';
 import React from 'react';
-import {CurrencyData} from '../../../Main';
-import {CurrencyHistory} from './CurrencyHistory/CurrencyHistory';
+import {CurrencyHistory} from '../../components/Main/CurrencyHistory/CurrencyHistory';
+import {CurrencyData, HistoryData} from '../../types/types';
 
-export type HistoryData = {
-    date: string
-    priceUsd: string
-    time: number
-}
+
 type Props = {
     data: CurrencyData
     historyData: HistoryData[]

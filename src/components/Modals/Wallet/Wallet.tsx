@@ -1,8 +1,8 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 import {getWalletCurrencyData} from '../../../store/selectors/wallet';
-import {Columns} from '../../Main/Main';
 import {WalletAccessor, WalletTable} from './WalletTable/Table';
+import {Columns} from '../../../types/types';
 
 
 type Props = {}

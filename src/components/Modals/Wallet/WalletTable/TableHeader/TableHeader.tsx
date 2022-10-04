@@ -1,6 +1,6 @@
 import React from 'react';
 import {WalletAccessor} from '../Table';
-import {Columns} from '../../../../Main/Main';
+import {Columns} from '../../../../../types/types';
 
 type Props = {
     columns: Columns<WalletAccessor>[]

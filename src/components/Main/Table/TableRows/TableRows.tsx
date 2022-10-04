@@ -1,11 +1,11 @@
 import React from 'react';
 import {useModals} from '../../../Modals/ModalsProvider';
 import {ButtonStyled, LinkStyled} from '../../../common/CommonStyles';
-import {Columns} from '../../Main';
-import {Data, MainAccessor} from '../Table';
+import {MainAccessor} from '../Table';
+import {Columns, CurrencyTableData} from '../../../../types/types';
 
 type Props = {
-    data: Array<Data>
+    data: Array<CurrencyTableData>
     columns: Columns<MainAccessor>[]
 }
 

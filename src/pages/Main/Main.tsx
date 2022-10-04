@@ -1,35 +1,13 @@
 import React from 'react';
-import {Data, MainAccessor, Table} from './Table/Table';
-import {FlexStyled} from '../common/CommonStyles';
-
-export type Columns<A> = {
-    header: string
-    accessor: A
-}
-
+import {MainAccessor, Table} from '../../components/Main/Table/Table';
+import {FlexStyled} from '../../components/common/CommonStyles';
+import {Columns, CurrencyData, CurrencyTableData} from '../../types/types';
 
 type Props = {
     currencyData: CurrencyData[]
 }
-
-export type CurrencyData = {
-    id: string
-    rank: string
-    symbol: string
-    name: string
-    supply: string
-    maxSupply: string | null
-    marketCapUsd: string
-    volumeUsd24Hr: string
-    priceUsd: string
-    changePercent24Hr: string
-    vwap24Hr: string
-    explorer: string | null
-}
-
-
 export const Main: React.FC<Props> = ({currencyData}) => {
-    const mainTableData: Array<Data> = React.useMemo(
+    const mainTableData: Array<CurrencyTableData> = React.useMemo(
         () => currencyData.map(item => ({
             id: item.id,
             name: item.name,

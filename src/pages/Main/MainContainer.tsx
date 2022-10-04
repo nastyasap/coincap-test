@@ -3,8 +3,8 @@ import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {getCurrenciesTableData, getCurrentPage} from '../../store/selectors/currenciesTable';
 import {currenciesTableSlice} from '../../store/reducers/currenciesTable';
-import {Pagination} from '../Pagination/Pagination';
-import {FlexStyled} from '../common/CommonStyles';
+import {Pagination} from '../../components/Pagination/Pagination';
+import {FlexStyled} from '../../components/common/CommonStyles';
 
 export const MainContainer = () => {
     const data = useSelector(getCurrenciesTableData)

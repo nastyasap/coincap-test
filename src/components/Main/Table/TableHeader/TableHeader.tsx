@@ -1,6 +1,6 @@
 import React from 'react';
-import {Columns} from '../../Main';
 import {MainAccessor} from '../Table';
+import {Columns} from '../../../../types/types';
 
 type Props = {
     columns: Columns<MainAccessor>[]

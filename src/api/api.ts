@@ -1,7 +1,6 @@
 import axios, {AxiosResponse} from "axios";
-import {CurrencyData} from '../components/Main/Main';
-import {HistoryData} from '../components/Main/Table/TableRows/CurrencyPage/CurrencyPage';
 import {ROWS_PER_PAGE} from '../store/sagas/currenciesTable';
+import {CurrencyData, HistoryData} from '../types/types';
 
 const instance = axios.create({
     baseURL: 'https://api.coincap.io/v2/assets'

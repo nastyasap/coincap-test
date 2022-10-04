@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {CurrencyData} from '../../components/Main/Main';
+import {CurrencyData} from '../../types/types';
 
 type InitialState = {
     isLoading: boolean

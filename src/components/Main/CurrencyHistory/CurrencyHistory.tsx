@@ -1,9 +1,9 @@
 import React from 'react';
-import {HistoryData} from '../CurrencyPage';
 import {CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis} from 'recharts';
-import {FlexStyled} from '../../../../../common/CommonStyles';
+import {ButtonStyled, FlexStyled} from '../../common/CommonStyles';
 import {useDispatch} from 'react-redux';
-import {currencySlice} from '../../../../../../store/reducers/currency';
+import {currencySlice} from '../../../store/reducers/currency';
+import {HistoryData} from '../../../types/types';
 
 
 type Props = {
@@ -21,7 +21,6 @@ export const CurrencyHistory: React.FC<Props> = ({historyData}) => {
             minute: 'numeric'
         })
     }))
-    console.log(historyData)
 
     const onIntervalChange = (interval: string, start: number) => {
         dispatch(currencySlice.actions.historyDataRequest({interval, start}))
@@ -43,9 +42,9 @@ export const CurrencyHistory: React.FC<Props> = ({historyData}) => {
 
     return (
         <FlexStyled direction={'column'}>
-            <FlexStyled>
-                {periods.map((item) => <button onClick={() => onIntervalChange(item.interval, item.start)}
-                                               key={item.name}>{item.name}</button>)}
+            <FlexStyled justify={'space-between'}>
+                {periods.map((item) => <ButtonStyled onClick={() => onIntervalChange(item.interval, item.start)}
+                                               key={item.name}>{item.name}</ButtonStyled>)}
             </FlexStyled>
             <LineChart width={600} height={300} data={data} margin={{top: 5, right: 20, bottom: 5, left: 0}}>
                 <Line type="monotone" dataKey="priceUsd" stroke="#8884d8"/>

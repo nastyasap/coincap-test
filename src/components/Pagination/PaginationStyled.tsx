@@ -4,38 +4,28 @@ export const PaginationContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+
   .pageCard {
     height: 36px;
     padding: 0 15px;
     background: transparent;
-    border: 1px solid #b7bcce;
+    border: 1px solid #e0c0e1;
     box-sizing: border-box;
     border-radius: 4px;
     margin: 0 6px;
-    color: #b9bdcf;
+    color: #e0c0e1;
     cursor: pointer;
+
     &:not([disabled]):hover {
-      border: 1px solid #1e86ff;
-      color: #1e86ff;
+      border: 1px solid #e6a7e7;
+      color: #e6a7e7;
     }
   }
+
   .pageCard.active {
-    background: #1e86ff;
-    border: 1px solid #1e86ff;
-    color: #fff;
+    background: #e6a7e7;
+    border: 1px solid #e6a7e7;
+    color: #4b4949;
   }
 `;
 
-export const MorePaginationIconContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  height: 36px;
-  width: 36px;
-`;
-
-export const Icon = styled.img`
-  width: 20px;
-  height: 20px;
-  padding: 0 0.5rem;
-`;

@@ -1,8 +1,8 @@
 import React from 'react'
 import {TableHeader} from './TableHeader/TableHeader';
 import {TableRows} from './TableRows/TableRows';
-import {Columns} from '../../../Main/Main';
 import {TableStyled} from '../../../Main/Table/TableStyled';
+import {Columns} from '../../../../types/types';
 
 export type WalletAccessor = 'name' | 'count' | 'currentPrice' | 'delete'
 export type WalletData = {
