@@ -22,7 +22,7 @@ export const MainContainer = () => {
     return (
         <FlexStyled direction={'column'}>
             <Main currencyData={data}/>
-            <Pagination currentPage={currentPage} pageCount={100} setCurrentPage={setCurrentPage}/>
+            <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage}/>
         </FlexStyled>
     )
 }
