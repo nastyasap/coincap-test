@@ -1,0 +1,24 @@
+import {all, call, put, select, takeLatest} from '@redux-saga/core/effects';
+import {currencySlice} from '../reducers/currency';
+import {currenciesApi} from '../../api/api';
+import {getCurrencyId} from '../selectors/currency';
+
+function* fetchCurrencyData({payload}: ReturnType<typeof currencySlice.actions.loadCurrencyRequest>) {
+    const {data} = yield call(currenciesApi.getCurrency, payload)
+    const {data: historyData} = yield call(currenciesApi.getCurrencyHistory, payload, 'd1')
+    yield put(currencySlice.actions.loadCurrencySuccess(data))
+    yield put(currencySlice.actions.historyDataSuccess(historyData))
+}
+
+function* fetchCurrencyHistoryData({payload}: ReturnType<typeof currencySlice.actions.historyDataRequest>) {
+    const id: string = yield select(getCurrencyId)
+    const {data} = yield call(currenciesApi.getCurrencyHistory, id, payload)
+    yield put(currencySlice.actions.historyDataSuccess(data))
+}
+
+export function* currencySaga() {
+    yield all([
+        takeLatest(currencySlice.actions.loadCurrencyRequest.type, fetchCurrencyData),
+        takeLatest(currencySlice.actions.historyDataRequest.type, fetchCurrencyHistoryData),
+    ])
+}
