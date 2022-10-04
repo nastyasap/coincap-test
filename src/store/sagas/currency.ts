@@ -5,15 +5,16 @@ import {getCurrencyId} from '../selectors/currency';
 
 function* fetchCurrencyData({payload}: ReturnType<typeof currencySlice.actions.loadCurrencyRequest>) {
     const {data} = yield call(currenciesApi.getCurrency, payload)
-    const {data: historyData} = yield call(currenciesApi.getCurrencyHistory, payload, 'd1')
-    yield put(currencySlice.actions.loadCurrencySuccess(data))
-    yield put(currencySlice.actions.historyDataSuccess(historyData))
+    const {data: historyData} = yield call(currenciesApi.getCurrencyHistory, payload, 'm30')
+    console.log('saga', historyData.data)
+    yield put(currencySlice.actions.loadCurrencySuccess({currencyData: data.data}))
+    yield put(currencySlice.actions.historyDataSuccess(historyData.data))
 }
 
 function* fetchCurrencyHistoryData({payload}: ReturnType<typeof currencySlice.actions.historyDataRequest>) {
     const id: string = yield select(getCurrencyId)
-    const {data} = yield call(currenciesApi.getCurrencyHistory, id, payload)
-    yield put(currencySlice.actions.historyDataSuccess(data))
+    const {data} = yield call(currenciesApi.getCurrencyHistory, id, payload.interval, payload.start)
+    yield put(currencySlice.actions.historyDataSuccess(data.data))
 }
 
 export function* currencySaga() {

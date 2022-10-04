@@ -12,10 +12,10 @@ export const currenciesApi = {
         return instance.get <AxiosResponse<ResponseType<{ data: CurrencyData[] }>>>('', {params: {limit, offset, ids}})
     },
     getCurrency(id: string) {
-        return instance.get<CurrencyData>(`/${id}`)
+        return instance.get<AxiosResponse<ResponseType<CurrencyData>>>(`/${id}`)
     },
-    getCurrencyHistory(id: string, interval: string) {
-        return instance.get<HistoryData[]>(`/${id}/history?interval=${interval}`)
+    getCurrencyHistory(id: string, interval: string, start: number = (new Date().getTime() - 24 * 60 * 60 * 1000)) {
+        return instance.get<HistoryData[]>(`/${id}/history`, {params: {interval, start, end: new Date().getTime()}})
     }
 }
 

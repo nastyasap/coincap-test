@@ -26,7 +26,7 @@ export const currencySlice = createSlice({
                 state.isLoading = false
                 state.currencyData = action.payload.currencyData
             },
-            historyDataRequest(state, action: PayloadAction<string>) {
+            historyDataRequest(state, action: PayloadAction<{interval: string, start?: number}>) {
                 state.isHistoryLoading = true
             },
             historyDataSuccess(state, action: PayloadAction<HistoryData[]>) {

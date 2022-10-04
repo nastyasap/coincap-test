@@ -10,7 +10,7 @@ function App() {
             <HeaderContainer/>
             <Routes>
                 <Route path={'/'} element={<MainContainer/>}/>
-                <Route path={'/:id/:interval'} element={<CurrencyPageContainer/>}/>
+                <Route path={'/:id'} element={<CurrencyPageContainer/>}/>
             </Routes>
         </div>
     );

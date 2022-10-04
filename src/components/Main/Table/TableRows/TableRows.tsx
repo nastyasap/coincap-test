@@ -17,7 +17,7 @@ export const TableRows: React.FC<Props> = ({data, columns}) => {
                 <td key={column.accessor}>
                     {column.accessor === 'add' ?
                         <ButtonStyled onClick={() => setAddCurrencyId(row.id)}>{row[column.accessor]}</ButtonStyled> :
-                        <LinkStyled to={`/${row.id}/1d`}>{row[column.accessor]}</LinkStyled>}
+                        <LinkStyled to={`/${row.id}`}>{row[column.accessor]}</LinkStyled>}
                 </td>
             )}
         </tr>
