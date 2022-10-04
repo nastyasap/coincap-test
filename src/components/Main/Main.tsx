@@ -24,7 +24,9 @@ export type CurrencyData = {
     priceUsd: string
     changePercent24Hr: string
     vwap24Hr: string
+    explorer: string | null
 }
+
 
 export const Main: React.FC<Props> = ({currencyData}) => {
     const mainTableData: Array<Data> = React.useMemo(

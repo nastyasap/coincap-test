@@ -14,7 +14,8 @@ export const CurrencyPageContainer = () => {
         volumeUsd24Hr: "2927959461.1750323310959460",
         priceUsd: "6929.8217756835584756",
         changePercent24Hr: "-0.8101417214350335",
-        vwap24Hr: "7175.0663247679233209"
+        vwap24Hr: "7175.0663247679233209",
+        explorer: null
     }
     const historyData = [
         {
