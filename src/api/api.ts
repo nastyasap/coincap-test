@@ -8,8 +8,8 @@ const instance = axios.create({
 })
 
 export const currenciesApi = {
-    getDataTable(offset: number, limit: number = ROWS_PER_PAGE) {
-        return instance.get<{ data: CurrencyData[] }>('', {params: {limit, offset}})
+    getDataTable(offset: number = 0, limit: number = ROWS_PER_PAGE, ids?: string) {
+        return instance.get<{ data: CurrencyData[] }>('', {params: {limit, offset, ids}})
     },
     getCurrency(id: string) {
         return instance.get<CurrencyData>(`/${id}`)

@@ -14,7 +14,7 @@ export const topCurrenciesSlice = createSlice({
         name: 'TopCurrencies',
         initialState: initialState,
         reducers: {
-            loadTopCurrenciesRequest(state, action: PayloadAction<number>) {
+            loadTopCurrenciesRequest(state, action: PayloadAction) {
                 state.isLoading = true
             },
             loadTopCurrenciesSuccess(state, action: PayloadAction<{ currenciesData: CurrencyData[] }>) {
