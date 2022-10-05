@@ -8,9 +8,10 @@ import {HistoryData} from '../../../types/types';
 
 type Props = {
     historyData: HistoryData[]
+    name: string
 }
 
-export const CurrencyHistory: React.FC<Props> = ({historyData}) => {
+export const CurrencyHistory: React.FC<Props> = ({historyData, name}) => {
     const dispatch = useDispatch()
     const data = historyData.map(item => ({
         priceUsd: (Number(item.priceUsd).toFixed(2)).toString(),
@@ -42,9 +43,12 @@ export const CurrencyHistory: React.FC<Props> = ({historyData}) => {
 
     return (
         <FlexStyled direction={'column'}>
-            <FlexStyled justify={'space-between'}>
-                {periods.map((item) => <ButtonStyled onClick={() => onIntervalChange(item.interval, item.start)}
-                                               key={item.name}>{item.name}</ButtonStyled>)}
+            <FlexStyled justify={'space-between'} width={'100%'}>
+                <span>{name} Price Chart (USD)</span>
+                <FlexStyled width={'100%'} justify={'space-between'}>
+                    {periods.map((item) => <ButtonStyled onClick={() => onIntervalChange(item.interval, item.start)}
+                                                         key={item.name}>{item.name}</ButtonStyled>)}
+                </FlexStyled>
             </FlexStyled>
             <LineChart width={600} height={300} data={data} margin={{top: 5, right: 20, bottom: 5, left: 0}}>
                 <Line type="monotone" dataKey="priceUsd" stroke="#8884d8"/>

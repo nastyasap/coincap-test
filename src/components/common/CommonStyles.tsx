@@ -38,10 +38,9 @@ export const FlexStyled = styled.div<FlexStyledProps>`
   }
 
   .topCurrencyCostContainer {
-    @media screen and (max-width: 1070px) {
+    @media screen and (max-width: 850px) {
       flex-direction: column;
       align-items: flex-start;
-
     }
   }
 
@@ -52,7 +51,9 @@ export const FlexStyled = styled.div<FlexStyledProps>`
   .green {
     color: green;
   }
+`
 
+export const ColorText = styled.p`
 `
 
 export const SpanStyled = styled.span`
@@ -96,9 +97,11 @@ export const ButtonStyled = styled.button`
     color: #ffffff;
   }
 `
-
-export const Title = styled.h3`
-  margin-left: 30px;
+type TitleProps = {
+    margin?: string
+}
+export const Title = styled.h3<TitleProps>`
+  margin: ${props => props.margin || 0};
 `
 
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {MainAccessor, Table} from '../../components/Main/Table/Table';
-import {FlexStyled} from '../../components/common/CommonStyles';
+import {FlexStyled, Title} from '../../components/common/CommonStyles';
 import {Columns, CurrencyData, CurrencyTableData} from '../../types/types';
 
 type Props = {
@@ -13,7 +13,7 @@ export const Main: React.FC<Props> = ({currencyData}) => {
             name: item.name,
             price: '$ ' + (Number(item.priceUsd).toFixed(2)).toString(),
             marketCap: '$ ' + ((Number(item.marketCapUsd) / 1000000000).toFixed(2)).toString() + ' B',
-            dayChange: (Number(item.changePercent24Hr).toFixed(2)).toString() + ' %',
+            dayChange: (Number(item.changePercent24Hr).toFixed(2)).toString(),
             dayVolume: '$ ' + ((Number(item.volumeUsd24Hr) / 1000000000).toFixed(2)).toString() + ' B',
             add: '+'
         })),
@@ -51,7 +51,8 @@ export const Main: React.FC<Props> = ({currencyData}) => {
     )
 
     return (
-        <FlexStyled>
+        <FlexStyled width={'100%'} direction={'column'} >
+            <Title margin={'10px 0'}>Today's Cryptocurrency Prices</Title>
             <Table currencyData={mainTableData} columns={mainColumns}/>
         </FlexStyled>
     )

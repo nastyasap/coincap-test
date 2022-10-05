@@ -10,7 +10,7 @@ type Props = {
 export const Header: React.FC<Props> = ({topCurrencies}) => {
     return (
         <FlexStyled direction={'column'} align={'flex-start'}>
-            <Title>Top Currencies</Title>
+            <Title margin={'0 30px'}>Top Cryptocurrencies</Title>
             <FlexStyled justify={'space-between'} width={'100%'}>
                 <FlexStyled justify={'space-around'} className={'topCurrencyCostContainer'}>
                     {topCurrencies.map(crypto =>

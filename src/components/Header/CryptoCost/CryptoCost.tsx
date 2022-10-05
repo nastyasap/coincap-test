@@ -12,8 +12,8 @@ export type CryptoCostProps = {
 
 export const CryptoCost: React.FC<CryptoCostProps> = ({name, price, dayChange, id}) => {
     return (
-        <TopCurrencyWrapper>
-            <LinkStyled to={`/${id}`}>
+        <LinkStyled to={`/${id}`}>
+            <TopCurrencyWrapper>
                 {name}
                 <FlexStyled justify={'space-between'} align={'flex-start'} width={'90%'}>
                     <SpanStyled>{`$ ${Number(price).toFixed(2)} `}</SpanStyled>
@@ -21,7 +21,8 @@ export const CryptoCost: React.FC<CryptoCostProps> = ({name, price, dayChange, i
                         <p className={(+dayChange) > 0 ? 'green' : 'red'}>{Number(dayChange).toFixed(2)} %</p>
                     </SpanStyled>
                 </FlexStyled>
-            </LinkStyled>
-        </TopCurrencyWrapper>
+            </TopCurrencyWrapper>
+        </LinkStyled>
+
     )
 }
