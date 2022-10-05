@@ -1,7 +1,7 @@
-import {CryptoCost} from '../CryptoCost/CryptoCost';
+import {WalletCost} from '../CryptoCost/WalletCost';
 
 export const Wallet = () => {
     return (
-        <CryptoCost name={'wallet'} price={2000} dayChange={5}/>
+        <WalletCost name={'Wallet'} price={'2000'} dayChange={'5'}/>
     )
 }

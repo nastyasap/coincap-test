@@ -1,21 +1,25 @@
 import React from 'react';
-import {CryptoCost, CryptoCostProps} from '../../components/Header/CryptoCost/CryptoCost';
+import {CryptoCost} from '../../components/Header/CryptoCost/CryptoCost';
 import {Wallet} from '../../components/Header/Wallet/Wallet';
-import {FlexStyled} from '../../components/common/CommonStyles';
+import {FlexStyled, Title} from '../../components/common/CommonStyles';
+import {CurrencyData} from '../../types/types';
 
 type Props = {
-    topCurrencies: CryptoCostProps[]
+    topCurrencies: CurrencyData[]
 }
-
 export const Header: React.FC<Props> = ({topCurrencies}) => {
     return (
-        <FlexStyled justify={'space-between'} width={'100%'}>
-            <FlexStyled justify={'space-around'} className={'topCurrencyCostContainer'}>
-                {topCurrencies.map(crypto =>
-                    <CryptoCost key={crypto.name} name={crypto.name} price={crypto.price} dayChange={crypto.dayChange}/>
-                )}
+        <FlexStyled direction={'column'} align={'flex-start'}>
+            <Title>Top Currencies</Title>
+            <FlexStyled justify={'space-between'} width={'100%'}>
+                <FlexStyled justify={'space-around'} className={'topCurrencyCostContainer'}>
+                    {topCurrencies.map(crypto =>
+                        <CryptoCost key={crypto.id} id={crypto.id} name={crypto.name} price={crypto.priceUsd}
+                                    dayChange={crypto.changePercent24Hr}/>
+                    )}
+                </FlexStyled>
+                <Wallet/>
             </FlexStyled>
-            <Wallet/>
         </FlexStyled>
 
     )

@@ -4,7 +4,8 @@ import {currenciesApi} from '../../api/api';
 
 function* fetchTopCurrencies({payload}: ReturnType<typeof topCurrenciesSlice.actions.loadTopCurrenciesRequest>) {
     const {data} = yield call(currenciesApi.getDataTable, 0, 3)
-    yield put(topCurrenciesSlice.actions.loadTopCurrenciesSuccess(data))
+    console.log(data)
+    yield put(topCurrenciesSlice.actions.loadTopCurrenciesSuccess({ currenciesData: data.data}))
 }
 
 export function* topCurrenciesSaga() {

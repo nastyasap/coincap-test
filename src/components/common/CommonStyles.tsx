@@ -22,16 +22,18 @@ export const FlexStyled = styled.div<FlexStyledProps>`
   justify-content: ${props => props.justify || 'center'};
   align-items: ${props => props.align || 'center'};
   margin: 10px 10px;
+  color: #282c34;
+  font-weight: 300;
   width: ${props => props.width || 'content-box'};
   transition: all 0.3s;
 
   .topCurrencyCost {
-    @media screen and (max-width: 1260px) {
+    @media screen and (max-width: 1280px) {
       flex-direction: column;
     }
     @media screen and (max-width: 1070px) {
       flex-direction: row;
-      margin: 0
+      margin: 0 20px;
     }
   }
 
@@ -55,8 +57,8 @@ export const FlexStyled = styled.div<FlexStyledProps>`
 
 export const SpanStyled = styled.span`
   display: flex;
-  margin: 0;
-  padding: 0;
+  //margin: 0;
+  //padding: 0;
   //margin-right: 6px;
 `
 
@@ -81,9 +83,9 @@ export const ButtonStyled = styled.button`
   border-radius: 6px;
   border: 1px solid #e6a7e7;
   color: #4b4949;
-  background-color: #e6a7e7;
+  background-color: rgba(230, 167, 231, 0.62);
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   box-sizing: border-box;
   transition: all 0.3s;
@@ -93,6 +95,10 @@ export const ButtonStyled = styled.button`
     border: 1px solid #e6a7e7;
     color: #ffffff;
   }
+`
+
+export const Title = styled.h3`
+  margin-left: 30px;
 `
 
 

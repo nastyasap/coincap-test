@@ -1,30 +1,27 @@
 import React from 'react';
-import {useModals} from '../../Modals/ModalsProvider';
-import {ButtonStyled, FlexStyled, LinkStyled, SpanStyled} from '../../common/CommonStyles';
+import {FlexStyled, LinkStyled, SpanStyled} from '../../common/CommonStyles';
+import {TopCurrencyWrapper} from './CryptoCostStyles';
 
 export type CryptoCostProps = {
     // icon: string
     name: string
-    price: number
-    dayChange: number
+    price: string
+    dayChange: string
+    id?: string
 }
 
-export const CryptoCost: React.FC<CryptoCostProps> = ({name, price, dayChange}) => {
-    const {setIsMyWalletModalOpen} = useModals()
-    const diff = Number(((price * dayChange / 100)).toFixed(2))
+export const CryptoCost: React.FC<CryptoCostProps> = ({name, price, dayChange, id}) => {
     return (
-        <FlexStyled className={'topCurrencyCost'}>
-            <SpanStyled>{name === 'wallet' ?
-                <ButtonStyled onClick={() => setIsMyWalletModalOpen(true)}>{name}</ButtonStyled> :
-                <LinkStyled to={''}>{name}</LinkStyled>} </SpanStyled>
-            <FlexStyled justify={'flex-start'} align={'flex-start'} width={'220px'}>
-                <SpanStyled>{`${price} USD`}</SpanStyled>
-                <SpanStyled>
-                    {diff >= 0 ? '+' : '-'}{Math.abs(diff)}(
-                    <p className={dayChange>0 ? 'green' : 'red'}>{dayChange} %</p>
-                    )
-                </SpanStyled>
-            </FlexStyled>
-        </FlexStyled>
+        <TopCurrencyWrapper>
+            <LinkStyled to={`/${id}`}>
+                {name}
+                <FlexStyled justify={'space-between'} align={'flex-start'} width={'90%'}>
+                    <SpanStyled>{`$ ${Number(price).toFixed(2)} `}</SpanStyled>
+                    <SpanStyled>
+                        <p className={(+dayChange) > 0 ? 'green' : 'red'}>{Number(dayChange).toFixed(2)} %</p>
+                    </SpanStyled>
+                </FlexStyled>
+            </LinkStyled>
+        </TopCurrencyWrapper>
     )
 }

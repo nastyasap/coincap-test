@@ -1,11 +1,17 @@
 import {Header} from './Header';
+import {useDispatch, useSelector} from 'react-redux';
+import {getTopCurrencies} from '../../store/selectors/topCurrencies';
+import {useEffect} from 'react';
+import {topCurrenciesSlice} from '../../store/reducers/topCurrencies';
 
 export const HeaderContainer = () => {
-    const data = [
-        {name: 'bitcoin', price: 6929, dayChange: -0.81},
-        {name: 'ethereum', price: 405, dayChange: -0.5},
-        {name: 'ripple', price: 688, dayChange: -0.6}
-    ]
+    const data = useSelector(getTopCurrencies)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(topCurrenciesSlice.actions.loadTopCurrenciesRequest())
+    }, [dispatch])
+
     return (
         <Header topCurrencies={data}/>
     )
