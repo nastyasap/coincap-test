@@ -10,11 +10,12 @@ type Props = {
 }
 
 export const ModalContainer: React.FC<Props> = ({isOpen, onClose, header, children}) => {
+
     if (!isOpen) return null
     return (
         <>
-            <Backdrop>
-                <Wrapper>
+            <Backdrop onClick={onClose}>
+                <Wrapper onClick={(e) => e.stopPropagation()}>
                     <StyledModal>
                         <Header>
                             <HeaderText>{header}</HeaderText>
