@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter} from 'react-router-dom';
+import {HashRouter} from 'react-router-dom';
 import {ModalsProvider} from './components/Modals/ModalsProvider';
 import {Global} from './components/common/CommonStyles';
 import {Provider} from 'react-redux';
@@ -16,10 +16,10 @@ root.render(
     <React.StrictMode>
         <Provider store={store}>
             <ModalsProvider>
-                <BrowserRouter>
+                <HashRouter>
                     <Global/>
                     <App/>
-                </BrowserRouter>
+                </HashRouter>
             </ModalsProvider>
         </Provider>
     </React.StrictMode>
