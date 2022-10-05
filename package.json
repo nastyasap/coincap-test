@@ -1,6 +1,6 @@
 {
   "name": "coincap-test",
-  "homepage": "https://nastyasap.github.io/coincap-test",
+  "homepage": "https://nastyasap.github.io/coincap_test",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -22,6 +22,7 @@
     "@types/styled-components": "^5.1.26",
     "axios": "^0.27.2",
     "classnames": "^2.3.2",
+    "gh-pages": "^4.0.0",
     "prettier": "^2.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
