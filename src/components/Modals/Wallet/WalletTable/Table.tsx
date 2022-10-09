@@ -3,6 +3,7 @@ import {TableHeader} from './TableHeader/TableHeader';
 import {TableRows} from './TableRows/TableRows';
 import {TableStyled} from '../../../Main/Table/TableStyled';
 import {Columns} from '../../../../types/types';
+import {FlexStyled} from '../../../common/CommonStyles';
 
 export type WalletAccessor = 'name' | 'count' | 'currentPrice' | 'totalPrice' | 'delete'
 export type WalletData = {
@@ -21,9 +22,13 @@ type Props = {
 
 export const WalletTable: React.FC<Props> = ({currencyData, columns}) => {
     return (
-        <TableStyled>
-            <TableHeader columns={columns}/>
-            <TableRows columns={columns} data={currencyData}/>
-        </TableStyled>
+        <>
+            <TableStyled>
+                <TableHeader columns={columns}/>
+                <TableRows columns={columns} data={currencyData}/>
+            </TableStyled>
+            {!currencyData.length && <FlexStyled>Your wallet is empty</FlexStyled>}
+        </>
+
     )
 }

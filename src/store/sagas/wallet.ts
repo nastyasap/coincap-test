@@ -24,11 +24,11 @@ function* addCurrentCurrencyPrice({payload}: ReturnType<typeof walletSlice.actio
 }
 
 function* deleteCurrentCurrencyPrice({payload}: ReturnType<typeof walletSlice.actions.deleteCurrencyFromWalletRequest>) {
-    const data: CurrencyData = yield call(currenciesApi.getCurrency, payload.id)
+    const {data}= yield call(currenciesApi.getCurrency, payload.id)
     yield put(walletSlice.actions.deleteCurrencyFromWalletSuccess({
         id: payload.id,
         count: payload.count,
-        priceUsd: Number(data.priceUsd)
+        priceUsd: Number(data.data.priceUsd)
     }))
 }
 

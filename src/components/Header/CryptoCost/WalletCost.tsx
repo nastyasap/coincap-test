@@ -15,7 +15,7 @@ export const WalletCost: React.FC<Props> = ({name, price, diff, diffPercent}) =>
         <FlexStyled>
             <ButtonStyled className={'wallet'} onClick={() => setIsMyWalletModalOpen(true)}>
                 {name}
-                <FlexStyled justify={'space-between'} width={'240px'} className={'wallet'}>
+                <FlexStyled justify={'space-between'} width={'280px'} className={'wallet'}>
                     <SpanStyled>{price.toFixed(2)} USD </SpanStyled>
                     <SpanStyled>
                     {`${diff >= 0 ? '+' : '-'} ${Math.abs(+diff.toFixed(2))} `}

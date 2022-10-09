@@ -17,23 +17,23 @@ export const AddCurrencyToWallet: React.FC<Props> = ({onClose, id}) => {
             count: ''
         },
         validate: (values) => {
-            const error: { count?: string } = {};
+            const errors: { count?: string } = {};
             if (!values.count) {
-                error.count = 'Please enter count'
-            } else if (/^[0-9]*[.,]?[0-9]+(?:[eE][-+]?[0-9]+)?$/.test(values.count)) {
-                error.count = 'Number is required'
+                errors.count = 'Please enter count'
+            } if (!/^[0-9]+(.[0-9]{1,6})?$/.test(values.count)) {
+                errors.count = 'Number is required'
             }
+            return errors
         },
         onSubmit: (values) => {
             id && dispatch(walletSlice.actions.addCurrencyToWalletRequest({id, count: +values.count}))
             onClose()
-            // formik.resetForm()
         },
     })
 
     return (
         <form onSubmit={formik.handleSubmit}>
-            <input {...formik.getFieldProps('count')}/>
+            <input id={'count'} value={formik.values.count} onChange={formik.handleChange} autoFocus/>
             {formik.touched.count && formik.errors.count &&
                 <div style={{color: 'red'}}>{formik.errors.count}</div>
             }
