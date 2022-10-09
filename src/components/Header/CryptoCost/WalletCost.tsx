@@ -4,22 +4,23 @@ import {ButtonStyled, FlexStyled, SpanStyled} from '../../common/CommonStyles';
 
 type Props = {
     name: string
-    price: string
-    dayChange: string
+    price: number
+    diff: number
+    diffPercent: number
 }
 
-export const WalletCost: React.FC<Props> = ({name, price, dayChange}) => {
+export const WalletCost: React.FC<Props> = ({name, price, diff, diffPercent}) => {
     const {setIsMyWalletModalOpen} = useModals()
-    const diff = Number(((+price * +dayChange / 100)).toFixed(2))
     return (
         <FlexStyled>
-            <ButtonStyled onClick={() => setIsMyWalletModalOpen(true)}>
+            <ButtonStyled className={'wallet'} onClick={() => setIsMyWalletModalOpen(true)}>
                 {name}
-                <FlexStyled justify={'space-between'} width={'220px'}>
-                    <SpanStyled>{`${Number(price).toFixed(2)} USD ${diff >= 0 ? '+' : '-'} ${Math.abs(diff)} `}</SpanStyled>
+                <FlexStyled justify={'space-between'} width={'240px'} className={'wallet'}>
+                    <SpanStyled>{price.toFixed(2)} USD </SpanStyled>
                     <SpanStyled>
+                    {`${diff >= 0 ? '+' : '-'} ${Math.abs(+diff.toFixed(2))} `}
                         (
-                        <p className={(+dayChange) > 0 ? 'green' : 'red'}>{Number(dayChange).toFixed(2)} %</p>
+                        <p className={diffPercent > 0 ? 'green' : 'red'}>{diffPercent.toFixed(2)} %</p>
                         )
                     </SpanStyled>
                 </FlexStyled>

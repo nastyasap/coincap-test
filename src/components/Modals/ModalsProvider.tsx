@@ -26,7 +26,7 @@ export const ModalsProvider: React.FC<Props> = ({children}) => {
                 <>
                     <ModalContainer isOpen={addCurrencyId !== null} onClose={() => setAddCurrencyId(null)}
                                     header={'Add Currency'}>
-                        <AddCurrencyToWallet onClose={() => setAddCurrencyId(null)}/>
+                        <AddCurrencyToWallet id={addCurrencyId} onClose={() => setAddCurrencyId(null)}/>
                     </ModalContainer>
                     <ModalContainer isOpen={isMyWalletModalOpen} onClose={() => setIsMyWalletModalOpen(false)}
                                     header={'My Wallet'}>

@@ -21,26 +21,27 @@ export const FlexStyled = styled.div<FlexStyledProps>`
   flex-direction: ${props => props.direction || 'row'};
   justify-content: ${props => props.justify || 'center'};
   align-items: ${props => props.align || 'center'};
-  margin: 10px 10px;
+  margin: 6px 6px;
   color: #282c34;
   font-weight: 300;
   width: ${props => props.width || 'content-box'};
   transition: all 0.3s;
 
-  .topCurrencyCost {
-    @media screen and (max-width: 1280px) {
+  .wallet {
+    @media screen and (max-width: 600px) {
       flex-direction: column;
-    }
-    @media screen and (max-width: 1070px) {
-      flex-direction: row;
-      margin: 0 20px;
+      align-items: flex-start;
+      width: 140px;
+      font-size: 13px;
+      margin-right: 6px;
     }
   }
 
   .topCurrencyCostContainer {
-    @media screen and (max-width: 850px) {
+    @media screen and (max-width: 870px) {
       flex-direction: column;
       align-items: flex-start;
+      margin: 0 ;
     }
   }
 

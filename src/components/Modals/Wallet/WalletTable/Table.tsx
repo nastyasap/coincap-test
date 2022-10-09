@@ -4,12 +4,13 @@ import {TableRows} from './TableRows/TableRows';
 import {TableStyled} from '../../../Main/Table/TableStyled';
 import {Columns} from '../../../../types/types';
 
-export type WalletAccessor = 'name' | 'count' | 'currentPrice' | 'delete'
+export type WalletAccessor = 'name' | 'count' | 'currentPrice' | 'totalPrice' | 'delete'
 export type WalletData = {
     id: string
     name: string
     count: number
-    currentPrice: number
+    totalPrice: string
+    currentPrice: string
     delete: string
 }
 

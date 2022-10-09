@@ -38,7 +38,8 @@ export const Header = styled.div`
 
 export const HeaderText = styled.div`
   align-self: center;
-  color: lightgray;
+  color: #696767;
+  margin-left: 10px;
 `;
 
 export const Content = styled.div`

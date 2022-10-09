@@ -1,15 +1,25 @@
-import React from 'react';
-import {useSelector} from 'react-redux';
-import {getWalletCurrencyData} from '../../../store/selectors/wallet';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {getWalletCurrenciesData} from '../../../store/selectors/wallet';
 import {WalletAccessor, WalletTable} from './WalletTable/Table';
 import {Columns} from '../../../types/types';
+import {walletSlice} from '../../../store/reducers/wallet';
 
+export const Wallet: React.FC = () => {
+    const data = useSelector(getWalletCurrenciesData)
+    const walletCurrenciesId = data.map(crypto => crypto.id)
+    const dispatch = useDispatch()
 
-type Props = {}
+    useEffect(() => {
+        dispatch(walletSlice.actions.loadWalletRequest(walletCurrenciesId))
+    }, [dispatch, walletCurrenciesId])
 
-export const Wallet: React.FC<Props> = ({}) => {
-    const data = useSelector(getWalletCurrencyData)
-    const walletData = data.map(item => ({...item, delete: '-'}))
+    const walletData = data.map(item => ({
+        ...item,
+        currentPrice: item.currentPrice.toFixed(2),
+        totalPrice: (item.count * item.currentPrice).toFixed(2),
+        delete: '-'
+    }))
     const walletColumns: Columns<WalletAccessor>[] = React.useMemo(
         () => [
             {
@@ -23,6 +33,10 @@ export const Wallet: React.FC<Props> = ({}) => {
             {
                 header: 'Current Price',
                 accessor: 'currentPrice',
+            },
+            {
+                header: 'Total Price',
+                accessor: 'totalPrice',
             },
             {
                 header: 'Delete Currency',

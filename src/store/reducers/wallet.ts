@@ -33,14 +33,13 @@ export const walletSlice = createSlice({
             addCurrencyToWalletRequest(state, action: PayloadAction<{ id: string, count: number }>) {
                 state.isLoading = true
             },
-            addCurrencyToWalletSuccess(state, action: PayloadAction<{ id: string, count: number, priceUsd: number }>) {
+            addCurrencyToWalletSuccess(state, action: PayloadAction<{ id: string, name: string, count: number, currentPrice: number }>) {
                 state.isLoading = false
-                state.currenciesData.forEach(currency => {
-                    if (currency.id === action.payload.id) {
-                        currency.count += action.payload.count
-                    }
-                })
-                state.totalBuyPrice += action.payload.count * action.payload.priceUsd
+                const currency = state.currenciesData.find(currency => currency.id === action.payload.id)
+                currency
+                    ? currency.count += action.payload.count
+                    : state.currenciesData.push(action.payload)
+                state.totalBuyPrice += action.payload.count * action.payload.currentPrice
             },
             deleteCurrencyFromWalletRequest(state, action: PayloadAction<{ id: string, count: number }>) {
                 state.isLoading = true

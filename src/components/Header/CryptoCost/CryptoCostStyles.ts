@@ -12,10 +12,10 @@ export const TopCurrencyWrapper = styled.div`
   font-size: 13px;
   transition: all 0.3s;
 
-  @media screen and (max-width: 850px) {
-    flex-direction: row;
-    width: 210px;
-    align-items: center;
-    padding: 0 4px;
-  }
+  //@media screen and (max-width: 100px) {
+  //  flex-direction: row;
+  //  width: 210px;
+  //  align-items: center;
+  //  padding: 0 4px;
+  //}
 `

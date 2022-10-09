@@ -5,7 +5,7 @@ import {CurrencyData} from '../../types/types';
 
 function* getCurrentCurrenciesPrice({payload}: ReturnType<typeof walletSlice.actions.loadWalletRequest>) {
     const {data} = yield call(currenciesApi.getDataTable, 0, undefined, payload.join(','))
-    const object = (data as CurrencyData[]).reduce((acc: { [id: string]: number }, currency) => {
+    const object = (data.data as CurrencyData[]).reduce((acc: { [id: string]: number }, currency) => {
         acc[currency.id] = Number(currency.priceUsd)
         return acc
     }, {})
@@ -14,11 +14,12 @@ function* getCurrentCurrenciesPrice({payload}: ReturnType<typeof walletSlice.act
 }
 
 function* addCurrentCurrencyPrice({payload}: ReturnType<typeof walletSlice.actions.addCurrencyToWalletRequest>) {
-    const data: CurrencyData = yield call(currenciesApi.getCurrency, payload.id)
+    const {data} = yield call(currenciesApi.getCurrency, payload.id)
     yield put(walletSlice.actions.addCurrencyToWalletSuccess({
         id: payload.id,
+        name: data.data.name,
         count: payload.count,
-        priceUsd: Number(data.priceUsd)
+        currentPrice: Number(data.data.priceUsd)
     }))
 }
 
