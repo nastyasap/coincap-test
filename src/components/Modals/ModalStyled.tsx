@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {ButtonStyled, FlexStyled} from '../common/CommonStyles';
 
 export const Wrapper = styled.div`
   position: fixed;
@@ -26,7 +27,11 @@ export const StyledModal = styled.div`
   position: relative;
   margin: auto;
   border-radius: 8px;
-  width: 40%
+  width: 40%;
+
+  .wallet {
+    width: 515px;
+  }
 `;
 
 export const Header = styled.div`
@@ -48,3 +53,29 @@ export const Content = styled.div`
   overflow-x: hidden;
   overflow-y: auto;
 `;
+
+export const Input = styled.input`
+  border: 1px solid #e6a7e7;
+  padding: 4px 2px;
+  border-radius: 4px;
+  margin-right: 15px;
+
+  @media screen and (max-width: 480px) {
+    width: 100px;
+  }
+`
+
+export const ButtonSubmit = styled(ButtonStyled)`
+  //margin-top: 20px;
+  @media screen and (max-width: 480px) {
+    padding: 2px 2px;
+  }
+`
+
+export const FormWrapper = styled(FlexStyled)`
+  justify-content: space-between;
+  @media screen and (max-width: 710px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+`

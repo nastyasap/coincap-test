@@ -1,25 +1,25 @@
 import React from 'react';
-import {Backdrop, Content, Header, HeaderText, StyledModal, Wrapper} from './ModalStyled';
-import {ButtonStyled} from '../common/CommonStyles';
+import {Backdrop, ButtonSubmit, Content, Header, HeaderText, StyledModal, Wrapper} from './ModalStyled';
 
 type Props = {
     isOpen: boolean
     onClose: () => void
     header: string
+    className ?: string
     children: React.ReactNode
 }
 
-export const ModalContainer: React.FC<Props> = ({isOpen, onClose, header, children}) => {
+export const ModalContainer: React.FC<Props> = ({className, isOpen, onClose, header, children}) => {
 
     if (!isOpen) return null
     return (
         <>
             <Backdrop onClick={onClose}>
                 <Wrapper onClick={(e) => e.stopPropagation()}>
-                    <StyledModal>
+                    <StyledModal className={className}>
                         <Header>
                             <HeaderText>{header}</HeaderText>
-                            <ButtonStyled onClick={onClose}>Close</ButtonStyled>
+                            <ButtonSubmit onClick={onClose}>x</ButtonSubmit>
                         </Header>
                         <Content>
                             {children}

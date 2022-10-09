@@ -7,7 +7,8 @@ import {HashRouter} from 'react-router-dom';
 import {ModalsProvider} from './components/Modals/ModalsProvider';
 import {Global} from './components/common/CommonStyles';
 import {Provider} from 'react-redux';
-import {store} from './store/store';
+import {persistor, store} from './store/store';
+import {PersistGate} from 'redux-persist/integration/react';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -15,12 +16,14 @@ const root = ReactDOM.createRoot(
 root.render(
     <React.StrictMode>
         <Provider store={store}>
-            <ModalsProvider>
-                <HashRouter>
-                    <Global/>
-                    <App/>
-                </HashRouter>
-            </ModalsProvider>
+            <PersistGate persistor={persistor}>
+                <ModalsProvider>
+                    <HashRouter>
+                        <Global/>
+                        <App/>
+                    </HashRouter>
+                </ModalsProvider>
+            </PersistGate>
         </Provider>
     </React.StrictMode>
 )

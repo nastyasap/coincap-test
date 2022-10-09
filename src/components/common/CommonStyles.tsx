@@ -59,9 +59,6 @@ export const ColorText = styled.p`
 
 export const SpanStyled = styled.span`
   display: flex;
-  //margin: 0;
-  //padding: 0;
-  //margin-right: 6px;
 `
 
 export const LinkStyled = styled(Link)`
