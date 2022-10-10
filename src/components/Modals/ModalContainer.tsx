@@ -5,7 +5,7 @@ type Props = {
     isOpen: boolean
     onClose: () => void
     header: string
-    className ?: string
+    className?: string
     children: React.ReactNode
     width?: string
 }

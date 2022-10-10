@@ -31,7 +31,7 @@ export const StyledModal = styled.div<{ width?: string }>`
   transition: all 0.3s;
 
   @media screen and (max-width: 600px) {
-    width: 80%;
+    width: 60%;
   }
 `;
 
@@ -67,9 +67,8 @@ export const Input = styled.input`
 `
 
 export const ButtonSubmit = styled(ButtonStyled)`
-  //margin-top: 20px;
   @media screen and (max-width: 480px) {
-    padding: 2px 2px;
+    padding: 2px 4px;
   }
 `
 

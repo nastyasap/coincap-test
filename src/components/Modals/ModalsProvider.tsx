@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
 import OpenWallet from './Wallet';
 import AddCurrencyToWallet from './AddCurrencyToWallet';
@@ -20,15 +20,28 @@ export const ModalsProvider: React.FC<Props> = ({children}) => {
     const [addCurrencyId, setAddCurrencyId] = useState<null | string>(null)
     const [isMyWalletModalOpen, setIsMyWalletModalOpen] = useState(false)
 
+    useEffect(() => {
+        const close = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                setAddCurrencyId(null)
+                setIsMyWalletModalOpen(false)
+            }
+        }
+        document.addEventListener('keydown', close)
+        return () => document.removeEventListener('keydown', close)
+    }, [])
+
     return <ModalsContext.Provider value={{setAddCurrencyId, setIsMyWalletModalOpen}}>
         <>
             {ReactDOM.createPortal(
                 <>
-                    <ModalContainer width={'350px'} isOpen={addCurrencyId !== null} onClose={() => setAddCurrencyId(null)}
+                    <ModalContainer width={'350px'} isOpen={addCurrencyId !== null}
+                                    onClose={() => setAddCurrencyId(null)}
                                     header={'Add Currency'}>
                         <AddCurrencyToWallet id={addCurrencyId} onClose={() => setAddCurrencyId(null)}/>
                     </ModalContainer>
-                    <ModalContainer width={'520px'} className={'wallet'} isOpen={isMyWalletModalOpen} onClose={() => setIsMyWalletModalOpen(false)}
+                    <ModalContainer width={'520px'} className={'wallet'} isOpen={isMyWalletModalOpen}
+                                    onClose={() => setIsMyWalletModalOpen(false)}
                                     header={'My Wallet'}>
                         <OpenWallet/>
                     </ModalContainer>

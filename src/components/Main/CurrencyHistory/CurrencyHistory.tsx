@@ -4,6 +4,7 @@ import {ButtonStyled, FlexStyled} from '../../common/CommonStyles';
 import {useDispatch} from 'react-redux';
 import {currencySlice} from '../../../store/reducers/currency';
 import {HistoryData} from '../../../types/types';
+import {ResponsiveContainer} from 'recharts';
 
 
 type Props = {
@@ -16,11 +17,11 @@ export const CurrencyHistory: React.FC<Props> = ({historyData, name}) => {
     const data = historyData.map(item => {
         const date = new Date(item.time)
         const formatDate = (date.getDate() < 10 ? '0' : '') + date.getDate() + '.'
-            + (date.getMonth()+1 < 10 ? '0' : '') + (date.getMonth()+1) + ' '
-            + (date.getHours()< 10 ? '0' : '') + date.getHours() + ':' + (date.getMinutes() < 10 ? '0' : '') + date.getMinutes()
+            + (date.getMonth() + 1 < 10 ? '0' : '') + (date.getMonth() + 1) + ' '
+            + (date.getHours() < 10 ? '0' : '') + date.getHours() + ':' + (date.getMinutes() < 10 ? '0' : '') + date.getMinutes()
         return {
             priceUsd: (Number(item.priceUsd).toFixed(2)).toString(),
-            time:formatDate
+            time: formatDate
         }
     })
 
@@ -43,7 +44,7 @@ export const CurrencyHistory: React.FC<Props> = ({historyData, name}) => {
     ]
 
     return (
-        <FlexStyled direction={'column'}>
+        <FlexStyled direction={'column'} width={'100%'}>
             <FlexStyled justify={'space-between'} width={'100%'}>
                 <span>{name} Price Chart (USD)</span>
                 <FlexStyled width={'100%'} justify={'space-between'}>
@@ -51,13 +52,15 @@ export const CurrencyHistory: React.FC<Props> = ({historyData, name}) => {
                                                          key={item.name}>{item.name}</ButtonStyled>)}
                 </FlexStyled>
             </FlexStyled>
-            <LineChart width={600} height={300} data={data} margin={{top: 5, right: 20, bottom: 5, left: 0}}>
-                <Line type="monotone" dataKey="priceUsd" stroke="#8884d8"/>
-                <CartesianGrid stroke="#ccc" strokeDasharray="5 5"/>
-                <XAxis dataKey="time"/>
-                <YAxis/>
-                <Tooltip/>
-            </LineChart>
+            <ResponsiveContainer width='100%'>
+                <LineChart height={300} data={data} margin={{top: 5, right: 20, bottom: 5, left: 0}}>
+                    <Line type="monotone" dataKey="priceUsd" stroke="#8884d8"/>
+                    <CartesianGrid stroke="#ccc" strokeDasharray="5 5"/>
+                    <XAxis dataKey="time"/>
+                    <YAxis/>
+                    <Tooltip/>
+                </LineChart>
+            </ResponsiveContainer>
         </FlexStyled>
 
     )

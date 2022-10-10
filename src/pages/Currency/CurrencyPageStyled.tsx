@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const CurrencyWrapper = styled.div`
   display: flex;
   justify-content: space-around;
+  width: 100%;
+  margin: 0 6px;
   transition: all 0.3s;
   @media screen and (max-width: 970px) {
     flex-direction: column;
