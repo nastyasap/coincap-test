@@ -102,4 +102,22 @@ export const Title = styled.h3<TitleProps>`
   margin: ${props => props.margin || 0};
 `
 
+export const Label = styled.label`
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+`
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+`
+
+export const ConfirmButton = styled(ButtonStyled)`
+  padding: 0;
+  font-size: 12px;
+  width: 30px;
+`
 

@@ -1,10 +1,11 @@
-import {ButtonStyled, FlexStyled, LinkStyled, Title} from '../../components/common/CommonStyles';
+import {ButtonStyled, FlexStyled, Label, Title} from '../../components/common/CommonStyles';
 import React from 'react';
 import {CurrencyHistory} from '../../components/Main/CurrencyHistory/CurrencyHistory';
 import {CurrencyData, HistoryData} from '../../types/types';
-import arrow from '../../assets/icons/arrow.svg'
+import back from '../../assets/icons/back.svg'
 import {CostBlock, CostName, CostPrice, CostValue, CurrencyWrapper} from './CurrencyPageStyled';
 import {useModals} from '../../components/Modals/ModalsProvider';
+import {useNavigate} from 'react-router-dom';
 
 
 type Props = {
@@ -13,17 +14,17 @@ type Props = {
 }
 export const CurrencyPage: React.FC<Props> = ({data, historyData}) => {
     const {setAddCurrencyId} = useModals()
+    const navigate = useNavigate()
     const changePercent = +Number(data.changePercent24Hr).toFixed(2)
     return (
         <CurrencyWrapper>
             <FlexStyled direction={'column'} align={'flex-start'} justify={'flex-start'}>
-                <FlexStyled>
-                    <LinkStyled to={'/'}><Title>All Prices</Title></LinkStyled>
-                    <img src={arrow} style={{width: '15px'}}/>
-                    <LinkStyled to={`/${data.id}`}> <Title>{data.name}</Title></LinkStyled>
-                </FlexStyled>
+                <Label onClick={() => navigate(-1)}>
+                    <img src={back} style={{width: '30px', marginRight: '4px'}}/>
+                    <Title>Back</Title>
+                </Label>
                 <FlexStyled direction={'column'}>
-                    <CostPrice>{data.symbol}</CostPrice>
+                    <CostPrice>{data.name} {data.symbol}</CostPrice>
                     <CostPrice>
                         {(Number(data.priceUsd).toFixed(2)).toString()} USD
                         <p className={changePercent > 0 ? 'green' : 'red'}>{changePercent > 0 ? '+' : ''}{changePercent + '% '} </p>

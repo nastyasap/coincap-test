@@ -12,8 +12,8 @@ export const MainContainer = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(currenciesTableSlice.actions.loadTableRequest(1))
-    }, [dispatch])
+        dispatch(currenciesTableSlice.actions.loadTableRequest(currentPage))
+    }, [dispatch, currentPage])
 
     const setCurrentPage = (value: number) => {
         dispatch(currenciesTableSlice.actions.loadTableRequest(value))
