@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/coincap_test/static/css/main.e6c13ad2.css",
-    "main.js": "/coincap_test/static/js/main.fe546fa4.js",
+    "main.js": "/coincap_test/static/js/main.f2ba1505.js",
     "static/js/787.76a3e5c6.chunk.js": "/coincap_test/static/js/787.76a3e5c6.chunk.js",
-    "static/media/arrow.svg": "/coincap_test/static/media/arrow.e0c19d939f005d42f6172e101f0cd40d.svg",
     "index.html": "/coincap_test/index.html",
+    "static/media/back.svg": "/coincap_test/static/media/back.e9b6f2dd8d7a03abade25fc103c2165f.svg",
     "main.e6c13ad2.css.map": "/coincap_test/static/css/main.e6c13ad2.css.map",
-    "main.fe546fa4.js.map": "/coincap_test/static/js/main.fe546fa4.js.map",
+    "main.f2ba1505.js.map": "/coincap_test/static/js/main.f2ba1505.js.map",
     "787.76a3e5c6.chunk.js.map": "/coincap_test/static/js/787.76a3e5c6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.fe546fa4.js"
+    "static/js/main.f2ba1505.js"
   ]
 }
