@@ -13,15 +13,16 @@ type Props = {
 
 export const CurrencyHistory: React.FC<Props> = ({historyData, name}) => {
     const dispatch = useDispatch()
-    const data = historyData.map(item => ({
-        priceUsd: (Number(item.priceUsd).toFixed(2)).toString(),
-        time: new Date(item.time).toLocaleString('en', {
-            month: 'numeric',
-            day: 'numeric',
-            hour: 'numeric',
-            minute: 'numeric'
-        })
-    }))
+    const data = historyData.map(item => {
+        const date = new Date(item.time)
+        const formatDate = (date.getDate() < 10 ? '0' : '') + date.getDate() + '.'
+            + (date.getMonth()+1 < 10 ? '0' : '') + (date.getMonth()+1) + ' '
+            + (date.getHours()< 10 ? '0' : '') + date.getHours() + ':' + (date.getMinutes() < 10 ? '0' : '') + date.getMinutes()
+        return {
+            priceUsd: (Number(item.priceUsd).toFixed(2)).toString(),
+            time:formatDate
+        }
+    })
 
     const onIntervalChange = (interval: string, start: number) => {
         dispatch(currencySlice.actions.historyDataRequest({interval, start}))

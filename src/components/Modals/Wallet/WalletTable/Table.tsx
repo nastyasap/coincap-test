@@ -23,7 +23,7 @@ type Props = {
 export const WalletTable: React.FC<Props> = ({currencyData, columns}) => {
     return (
         <>
-            <TableStyled>
+            <TableStyled className={'wallet'}>
                 <TableHeader columns={columns}/>
                 <TableRows columns={columns} data={currencyData}/>
             </TableStyled>

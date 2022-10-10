@@ -1,4 +1,4 @@
-import {combineReducers, configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
+import {combineReducers, configureStore} from '@reduxjs/toolkit';
 import createSagaMiddleware from '@redux-saga/core';
 import rootSaga from './sagas';
 import {walletSlice} from './reducers/wallet';
@@ -26,7 +26,12 @@ const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
     reducer: persistedReducer,
-    middleware: [...getDefaultMiddleware(), sagaMiddleware],
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            thunk: false,
+            serializableCheck: false,
+        })
+            .concat(sagaMiddleware)
 });
 
 export const persistor = persistStore(store)

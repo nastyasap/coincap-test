@@ -3,6 +3,7 @@ import {useDispatch} from 'react-redux';
 import {walletSlice} from '../../../store/reducers/wallet';
 import {useFormik} from 'formik';
 import {ButtonSubmit, FormWrapper, Input} from '../ModalStyled';
+import {FlexStyled} from '../../common/CommonStyles';
 
 type Props = {
     onClose: () => void
@@ -21,7 +22,7 @@ export const AddCurrencyToWallet: React.FC<Props> = ({onClose, id}) => {
             if (!values.count) {
                 errors.count = 'Please enter count'
             }
-            if (!/^[0-9]+(.[0-9]{1,6})?$/.test(values.count)) {
+            if (!/^[0-9]*[.]?[0-9]+$/.test(values.count)) {
                 errors.count = 'Number is required'
             }
             return errors
@@ -35,13 +36,12 @@ export const AddCurrencyToWallet: React.FC<Props> = ({onClose, id}) => {
     return (
         <form onSubmit={formik.handleSubmit}>
             <FormWrapper>
-                <>
+                <FlexStyled direction={'column'} justify={'flex-start'} align={'flex-start'}>
                     <Input id={'count'} value={formik.values.count} onChange={formik.handleChange} autoFocus/>
-
-                </>
-                {formik.touched.count && formik.errors.count &&
-                    <div style={{color: 'red'}}>{formik.errors.count}</div>
-                }
+                    {formik.touched.count && formik.errors.count &&
+                        <div style={{color: 'red'}}>{formik.errors.count}</div>
+                    }
+                </FlexStyled>
                 <ButtonSubmit type={'submit'}>Submit</ButtonSubmit>
             </FormWrapper>
         </form>

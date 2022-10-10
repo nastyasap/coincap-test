@@ -24,11 +24,11 @@ export const ModalsProvider: React.FC<Props> = ({children}) => {
         <>
             {ReactDOM.createPortal(
                 <>
-                    <ModalContainer isOpen={addCurrencyId !== null} onClose={() => setAddCurrencyId(null)}
+                    <ModalContainer width={'350px'} isOpen={addCurrencyId !== null} onClose={() => setAddCurrencyId(null)}
                                     header={'Add Currency'}>
                         <AddCurrencyToWallet id={addCurrencyId} onClose={() => setAddCurrencyId(null)}/>
                     </ModalContainer>
-                    <ModalContainer className={'wallet'} isOpen={isMyWalletModalOpen} onClose={() => setIsMyWalletModalOpen(false)}
+                    <ModalContainer width={'520px'} className={'wallet'} isOpen={isMyWalletModalOpen} onClose={() => setIsMyWalletModalOpen(false)}
                                     header={'My Wallet'}>
                         <OpenWallet/>
                     </ModalContainer>

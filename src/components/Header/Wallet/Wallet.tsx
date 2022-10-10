@@ -12,7 +12,7 @@ export const Wallet = () => {
     const walletCurrenciesData = useSelector(getWalletCurrenciesData)
 
     const walletPrice = walletCurrenciesData.reduce((acc, currency) => acc += currency.count * currency.currentPrice, 0)
-    const diff = walletPrice - (totalWalletBuyPrice - totalWalletSellPrice)
+    const diff = walletPrice - (totalWalletBuyPrice - totalWalletSellPrice) || 0
     const diffPercent = diff / walletPrice * 100 || 0
 
     return (

@@ -14,6 +14,12 @@ export const TableStyled = styled.table`
       padding: 10px 15px;
       background: rgba(230, 167, 231, 0.46);
       font-size: 14px;
+      transition: all 0.3s;
+      
+      @media screen and (max-width: 600px) {
+        font-size: 10px;
+        padding: 4px 6px;
+      }
     }
 
     tr th:first-child {
@@ -36,6 +42,12 @@ export const TableStyled = styled.table`
       padding: 10px 15px;
       font-size: 14px;
       vertical-align: center;
+      transition: all 0.3s;
+
+      @media screen and (max-width: 600px) {
+        font-size: 10px;
+        padding: 4px 6px;
+      }
     }
 
     tr:nth-child(even) {
@@ -49,8 +61,10 @@ export const TableStyled = styled.table`
     tr td:last-child {
       border-radius: 0 8px 8px 0;
     }
+
+
   }
-  
+
   .red {
     color: #e70d0d;
     font-weight: 600;

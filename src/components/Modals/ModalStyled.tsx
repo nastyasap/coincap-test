@@ -21,16 +21,17 @@ export const Backdrop = styled.div`
   z-index: 500;
 `;
 
-export const StyledModal = styled.div`
+export const StyledModal = styled.div<{ width?: string }>`
   z-index: 100;
   background: white;
   position: relative;
   margin: auto;
   border-radius: 8px;
-  width: 40%;
+  width: ${props => props.width || '40%'};
+  transition: all 0.3s;
 
-  .wallet {
-    width: 515px;
+  @media screen and (max-width: 600px) {
+    width: 80%;
   }
 `;
 
@@ -74,6 +75,7 @@ export const ButtonSubmit = styled(ButtonStyled)`
 
 export const FormWrapper = styled(FlexStyled)`
   justify-content: space-between;
+  height: 70px;
   @media screen and (max-width: 710px) {
     flex-direction: column;
     align-items: flex-start;

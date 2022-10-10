@@ -7,16 +7,17 @@ type Props = {
     header: string
     className ?: string
     children: React.ReactNode
+    width?: string
 }
 
-export const ModalContainer: React.FC<Props> = ({className, isOpen, onClose, header, children}) => {
+export const ModalContainer: React.FC<Props> = ({width, className, isOpen, onClose, header, children}) => {
 
     if (!isOpen) return null
     return (
         <>
             <Backdrop onClick={onClose}>
                 <Wrapper onClick={(e) => e.stopPropagation()}>
-                    <StyledModal className={className}>
+                    <StyledModal width={width} className={className}>
                         <Header>
                             <HeaderText>{header}</HeaderText>
                             <ButtonSubmit onClick={onClose}>x</ButtonSubmit>
