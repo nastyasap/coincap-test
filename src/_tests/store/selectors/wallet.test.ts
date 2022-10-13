@@ -21,14 +21,14 @@ describe("wallet selector test", () => {
     };
 
     it("should return currenciesData", () => {
-        expect(getWalletCurrenciesData.resultFunc(state)).toBe(currenciesData);
+        expect(getWalletCurrenciesData.resultFunc(state)).toEqual(currenciesData);
     });
 
     it("should return totalBuyPrice", () => {
-        expect(getWalletTotalBuyPrice.resultFunc(state)).toBe(totalBuyPrice);
+        expect(getWalletTotalBuyPrice.resultFunc(state)).toEqual(totalBuyPrice);
     });
 
     it("should return totalSellPrice", () => {
-        expect(getWalletTotalSellPrice.resultFunc(state)).toBe(totalSellPrice);
+        expect(getWalletTotalSellPrice.resultFunc(state)).toEqual(totalSellPrice);
     });
 });
