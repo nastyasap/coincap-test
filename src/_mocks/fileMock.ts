@@ -1,4 +1,6 @@
-export const currenciesData = [
+import {CurrencyData, HistoryData} from '../types/types';
+
+export const currenciesData: CurrencyData[] = [
     {
         id: '123',
         rank: 'USD',
@@ -8,7 +10,7 @@ export const currenciesData = [
         maxSupply: 'string',
         marketCapUsd: 'string',
         volumeUsd24Hr: 'string',
-        priceUsd: 'string',
+        priceUsd: '123',
         changePercent24Hr: 'string',
         vwap24Hr: 'string',
         explorer: 'string'
@@ -22,14 +24,14 @@ export const currenciesData = [
         maxSupply: 'string',
         marketCapUsd: 'string',
         volumeUsd24Hr: 'string',
-        priceUsd: 'string',
+        priceUsd: '345',
         changePercent24Hr: 'string',
         vwap24Hr: 'string',
         explorer: 'string'
     },
 ];
 
-export const historyCurrencyData = [
+export const historyCurrencyData: HistoryData[] = [
     {
         date: 'string',
         priceUsd: 'string',

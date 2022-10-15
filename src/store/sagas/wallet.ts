@@ -3,7 +3,7 @@ import {currenciesApi} from '../../api/api';
 import {walletSlice} from '../reducers/wallet';
 import {CurrencyData} from '../../types/types';
 
-function* getCurrentCurrenciesPrice({payload}: ReturnType<typeof walletSlice.actions.loadWalletRequest>) {
+export function* getCurrentCurrenciesPrice({payload}: ReturnType<typeof walletSlice.actions.loadWalletRequest>) {
     const {data} = yield call(currenciesApi.getDataTable, 0, undefined, payload.join(','))
     const object = (data.data as CurrencyData[]).reduce((acc: { [id: string]: number }, currency) => {
         acc[currency.id] = Number(currency.priceUsd)
@@ -13,7 +13,7 @@ function* getCurrentCurrenciesPrice({payload}: ReturnType<typeof walletSlice.act
     yield put(walletSlice.actions.loadWalletSuccess(object))
 }
 
-function* addCurrentCurrencyPrice({payload}: ReturnType<typeof walletSlice.actions.addCurrencyToWalletRequest>) {
+export function* addCurrentCurrencyPrice({payload}: ReturnType<typeof walletSlice.actions.addCurrencyToWalletRequest>) {
     const {data} = yield call(currenciesApi.getCurrency, payload.id)
     yield put(walletSlice.actions.addCurrencyToWalletSuccess({
         id: payload.id,
@@ -23,8 +23,8 @@ function* addCurrentCurrencyPrice({payload}: ReturnType<typeof walletSlice.actio
     }))
 }
 
-function* deleteCurrentCurrencyPrice({payload}: ReturnType<typeof walletSlice.actions.deleteCurrencyFromWalletRequest>) {
-    const {data}= yield call(currenciesApi.getCurrency, payload.id)
+export function* deleteCurrentCurrencyPrice({payload}: ReturnType<typeof walletSlice.actions.deleteCurrencyFromWalletRequest>) {
+    const {data} = yield call(currenciesApi.getCurrency, payload.id)
     yield put(walletSlice.actions.deleteCurrencyFromWalletSuccess({
         id: payload.id,
         count: payload.count,
